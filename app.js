@@ -140,6 +140,20 @@ app.post('/create-product',async (req, res) => {
   }
 });
 
+app.post('/delete-product', async (req,res) => {
+  const {productKey} = req.body;
+  console.log(req.body);
+  try {
+    const result = await Product.deleteOne({productId:productKey});
+    if(result.deletedCount > 0){
+      res.status(200).json({success:true,message:"product deleted success", deletedCount: result.deletedCount});
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({success:false,message:"Some issue in product deletion"});
+  }
+});
+
 // Get All Products Route
 app.get('/get-product', async (req, res) => {
   try {
