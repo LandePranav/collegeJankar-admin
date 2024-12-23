@@ -18,6 +18,7 @@ const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({storage:storage});
 const bodyParser = require('body-parser');
+const checkRole = require('./middleware/checkRole');
 require('dotenv').config();
 
 const app = express();

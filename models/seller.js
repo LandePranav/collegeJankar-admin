@@ -16,6 +16,7 @@ const SellerSchema = new mongoose.Schema({
   loggedIn: { type: String, enum: ['loggedin', 'loggedout'], default: 'loggedout' },
   verificationToken: {type: String},
   verificationTokenExpiry: { type: Date},
+  role: { type: String, enum: ['admin', 'seller'], default: 'seller' },
 });
 
 // Hash password before saving

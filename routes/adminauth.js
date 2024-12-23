@@ -5,6 +5,7 @@ const router = express.Router();
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const checkRole = require("../middleware/checkRole");
 
 const generateVerificationToken = () => {
   return crypto.randomBytes(32).toString('hex');
@@ -26,7 +27,6 @@ const sendVerificationEmail = async (email,sellerId, verificationToken) => {
     subject: "Verify Your Email",
     html: `
     <div>
-
       <h2>Welcome Aboard Seller </h2>
       <h3>User Your New Unique Id to Login, but first verify</h3>
       <h3>Unique ID : ${sellerId} </h3>
@@ -94,10 +94,12 @@ router.post('/login', async (req, res) => {
     await seller.save();
     // Store sellerId in session
     req.session.sellerId = sellerId;
+    req.session.role = seller.role;
     res.status(200).json({
       success: true,
       message: 'Login successful',
       sellerId,
+      role: seller.role
     });
   } catch (error) {
     res.status(500).json({
