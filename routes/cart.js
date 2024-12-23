@@ -21,7 +21,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-
 // Add to Cart Route
 router.post('/addtocart', async (req, res) => {
   try {

@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const Seller = require('../models/seller');
 
 router.post('/signup', async (req, res) => {
     try {
