@@ -3,6 +3,7 @@ const productSchema = new mongoose.Schema({
   name: String,
   price: String,
   img: String,
+  description: String,
   category: String,
   rating: Number,
   productId: { type: String, unique: true }, // Added productId field
