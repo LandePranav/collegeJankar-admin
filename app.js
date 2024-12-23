@@ -21,7 +21,8 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended:true, limit: '50mb'}));
 
 // Middleware
 app.use(cors({
@@ -31,9 +32,9 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 app.use(require('cookie-parser')());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 app.use(
   session({
