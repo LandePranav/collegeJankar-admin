@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({extended:true, limit: '50mb'}));
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000','https://merabestie.com','https://hosteecommerce.vercel.app', 'https://collegeJankar-admin.vercel.app'], 
+  origin: ['http://localhost:3000','https://merabestie.com','https://hosteecommerce.vercel.app', 'https://collegejankar-front.vercel.app'], 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
