@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendVerificationEmail = async (email,sellerId, verificationToken) => {
-  const verificationLink = `http://localhost:5000/admin/verify-email?token=${verificationToken}`;
+  const verificationLink = `https://collegejankar-admin.onrender.com/admin/verify-email?token=${verificationToken}`;
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
